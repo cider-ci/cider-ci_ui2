@@ -7,8 +7,11 @@
     )
 
   (:require
+    [cider-ci.ui2.ui.state.projects]
+
     [cider-ci.utils.core :refer [keyword str presence]]
     [cider-ci.utils.digest :refer [digest]]
+
     [cljsjs.moment]
     [reagent.core :as r]
     [timothypratley.patchin :refer [patch]]
@@ -31,14 +34,18 @@
 
 (defonce page-state (r/atom {}))
 
+(def commits-filter-defaults
+  {:branch-name nil
+   :git-ref nil
+   :heads-only true
+   :project-name nil
+   :my-commits false})
+
 (defonce client-state (r/atom {:debug true
                                :commits
-                               {:form-data
-                                {:branch-name nil
-                                 :git-ref nil
-                                 :heads-only true
-                                 :project-name nil
-                                 :my-commits false}}}))
+                               {:form-data commits-filter-defaults
+                                :current-filter commits-filter-defaults
+                                }}))
 
 (js/setInterval #(swap! client-state
                        (fn [s] (merge s {:timestamp (js/moment)}))) 1000)
@@ -56,4 +63,9 @@
        :user (data-attribute "body" "user")
        :authentication_providers  (data-attribute
                                     "body" "authproviders"))
+
+
+
+
+
 

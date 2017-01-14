@@ -29,21 +29,6 @@
 
 (def current-url (reaction (:current-url @state/client-state)))
 
-(defn general-debug-section []
-  (when (:debug @state/client-state)
-    [:section.debug
-     [:hr]
-     [:h1 "Debug"]
-     [:div.client-state
-      [:h2 "Client State"]
-      [:pre (.stringify js/JSON (clj->js @state/client-state) nil 2)]]
-     [:div.client-state
-      [:h2 "Server State"]
-      [:pre (.stringify js/JSON (clj->js @state/server-state) nil 2)]]
-     [:div.page-state
-      [:h2 "Page State"]
-      [:pre (.stringify js/JSON (clj->js @state/page-state) nil 2)]]
-     ]))
 
 (defn current-page []
   (let [location-href (-> js/window .-location .-href)
@@ -54,7 +39,7 @@
     [:div.container-fluid
      ;[:h1 "TEST"]
      [:div.page [(-> @state/page-state :current-page :component)]]
-     [general-debug-section]]))
+     [debug/general-debug-section]]))
 
 ;--- Routes
 
