@@ -31,7 +31,14 @@
 
 (defonce page-state (r/atom {}))
 
-(defonce client-state (r/atom {:debug true}))
+(defonce client-state (r/atom {:debug true
+                               :commits
+                               {:form-data
+                                {:branch-name nil
+                                 :git-ref nil
+                                 :heads-only true
+                                 :project-name nil
+                                 :my-commits false}}}))
 
 (js/setInterval #(swap! client-state
                        (fn [s] (merge s {:timestamp (js/moment)}))) 1000)

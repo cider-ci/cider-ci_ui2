@@ -3,6 +3,8 @@
     [cider-ci.ui2.ui.navbar.release :as navbar.release]
     [cider-ci.ui2.ui.navbar.user :as navbar.user]
     [cider-ci.ui2.constants :refer [CONTEXT]]
+    [cider-ci.ui2.ui.commits :as commits]
+
     [cider-ci.ui2.session.password.ui :as session.password]
 
     [cider-ci.utils.core :refer [presence]]
@@ -57,6 +59,8 @@
           [:b.caret]]]
         [:ul.dropdown-menu
          [:li [:a {:href "/cider-ci/ui2/"} "Root"]]
+         [:li.divider]
+         [:li [:a {:href (commits/path) } "Commits"]]
          [:li.divider]
          [:li [:a {:href (str CONTEXT "/create-admin")} "Create Admin"]]
          [:li [:a {:href "/cider-ci/ui2/session/password/sign-in"} "Sign in"]]
