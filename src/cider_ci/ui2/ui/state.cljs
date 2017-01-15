@@ -7,8 +7,6 @@
     )
 
   (:require
-    [cider-ci.ui2.ui.state.projects]
-
     [cider-ci.utils.core :refer [keyword str presence]]
     [cider-ci.utils.digest :refer [digest]]
 
@@ -63,9 +61,4 @@
        :user (data-attribute "body" "user")
        :authentication_providers  (data-attribute
                                     "body" "authproviders"))
-
-
-
-
-
 

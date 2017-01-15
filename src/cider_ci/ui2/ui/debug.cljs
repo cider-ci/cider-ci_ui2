@@ -8,7 +8,7 @@
     [cider-ci.ui2.constants :refer [CONTEXT]]
     [cider-ci.utils.core :refer [presence]]
     [cider-ci.ui2.ui.state :as state]
-    [cider-ci.ui2.ui.state.projects :as state.projects]
+    [cider-ci.ui2.ui.projects.state :as projects.state]
 
     [secretary.core :as secretary :include-macros true]
     ))
@@ -42,10 +42,10 @@
      [:h2 "Projects"]
      [:div.client-state
       [:h3 "Projects Client State"]
-      [pre-component @state.projects/client-state]]
+      [pre-component @projects.state/client-state]]
      [:div.client-state
       [:h3 "Projects Server State"]
-      [pre-component @state.projects/server-state]]
+      [pre-component @projects.state/server-state]]
 
 
      [:hr]

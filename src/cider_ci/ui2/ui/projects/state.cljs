@@ -1,4 +1,4 @@
-(ns cider-ci.ui2.ui.state.projects
+(ns cider-ci.ui2.ui.projects.state
   (:refer-clojure :exclude [str keyword])
 
   (:require-macros
@@ -21,6 +21,8 @@
 (defonce server-state (r/atom {}))
 
 (defonce client-state (r/atom {}))
+
+(def db (reaction (merge @server-state @client-state)))
 
 (let [{:keys [chsk ch-recv send-fn state]}
       (sente/make-channel-socket! (str "/cider-ci/repositories" "/ws/chsk")
